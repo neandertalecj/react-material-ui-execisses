@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-import Hello from './components/Hello'
-
-const styles = {
-  fontFamily: "sans-serif",
-  textAlign: "center"
-}
+import React, { Component, Fragment } from 'react';
+import { Header, Footer} from './components/layouts'
+import Exercises from './components/exercises'
 
 class App extends Component {
   render() {
     return (
-      <div style={styles}>
-        <Hello name='Hello from Hello' />
-        <h1>Hello from App {"\u2728"}</h1>
-      </div>
+      <Fragment>
+        <Header />
+        <Exercises />
+        <Footer />
+      </Fragment>
     );
   }
 }

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class Hello extends Component {
+class Footer extends Component {
     state = {  }
     render() { 
         return ( 
-            <h1>{this.props.name}</h1>
+            <h1>Footer</h1>
          );
     }
 }
  
-export default Hello;
+export default Footer;
