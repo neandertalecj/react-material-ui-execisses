@@ -5,7 +5,8 @@ import { muscles, exercises } from './store.js'
 
 class App extends Component {
   state = {
-    exercises
+    exercises,
+    exercise: {},
   }
 
   getExercisesByMuscules() {
@@ -21,15 +22,35 @@ class App extends Component {
     )
   }
 
+  handleCategorySelected = category => {
+    this.setState({
+      category
+    })
+  }
+
+  handleExerciseSelected = id => {
+    this.setState(({ exercises }) => ({
+      exercise: exercises.find(ex => ex.id === id)
+    }))
+  }
+
   render() {
-    console.log(this.getExercisesByMuscules())
     const exercises = this.getExercisesByMuscules()
+    const { category, exercise } = this.state
+
     return (
       <Fragment>
         <Header />
-        <Exercises exercises={exercises} />
-        <Footer 
+        <Exercises
+          exercise={exercise}
+          category={category}
+          exercises={exercises}
+          onSelect={this.handleExerciseSelected}
+        />
+        <Footer
+          category={category}
           muscles={muscles}
+          onSelect={this.handleCategorySelected}
         />
       </Fragment>
     );
