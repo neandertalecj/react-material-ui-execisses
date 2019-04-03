@@ -5,6 +5,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Fab from '@material-ui/core/Fab';
+
 import Add from '@material-ui/icons/Add'
 
 export default class extends Component {
@@ -22,13 +24,9 @@ export default class extends Component {
         const { open } = this.state
 
         return <Fragment>
-            <Button 
-                variant="fab"
-                onClick={this.handleToggle}
-                mini
-            >
+            <Fab onClick={this.handleToggle} size="small">
                 <Add />
-            </Button>
+            </Fab>
             <Dialog
                 open={open}
                 onClose={this.handleToggle}
@@ -46,7 +44,7 @@ export default class extends Component {
                     </form>
                 </DialogContent>
                 <DialogActions>
-                    <Button color="primary" variant="raised">
+                    <Button color="primary" variant="contained">
                         Create
                     </Button>
                 </DialogActions>
