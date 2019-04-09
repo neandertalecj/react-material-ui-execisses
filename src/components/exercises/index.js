@@ -11,6 +11,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
+import EditIcon from '@material-ui/icons/Edit'
+import Form from './Form'
+
 
 const styles = {
     Paper: {
@@ -24,14 +27,19 @@ const styles = {
 
 export default ({ 
     exercises, 
-    category, 
-    onSelect, 
+    category,
+    muscles,
+    editMode, 
+    onSelect,
+    exercise,
     exercise: { 
         id, 
         title = 'Welcome!', 
         description ='Plese select an exercise from the list on the left'
     },
-    onDelete
+    onDelete,
+    onSelectEdit,
+    onEdit
 }) => 
     <Grid container>
         <Grid item sm>
@@ -55,6 +63,9 @@ export default ({
                                         >
                                             <ListItemText primary={title} />
                                             <ListItemSecondaryAction>
+                                                <IconButton onClick={()=>onSelectEdit(id)}>
+                                                    <EditIcon/>
+                                                </IconButton>
                                                 <IconButton onClick={()=>onDelete(id)}>
                                                     <DeleteIcon/>
                                                 </IconButton>
@@ -70,17 +81,26 @@ export default ({
         </Grid>
         <Grid item sm>
             <Paper style={styles.Paper}>
-                <Typography
-                    variant="display1"
-                >
-                    {title}
-                </Typography>
-                <Typography
-                    variant="subheading"
-                    style={{marginTop: 20}}
-                >
-                    {description}
-                </Typography>
+                {editMode 
+                    ?   <Form 
+                            exercise={exercise}
+                            muscles={muscles}
+                            onSubmit={onEdit}
+                        />
+                    :   <Fragment>
+                            <Typography
+                                variant="display1"
+                            >
+                                {title}
+                            </Typography>
+                            <Typography
+                                variant="subheading"
+                                style={{marginTop: 20}}
+                            >
+                                {description}
+                            </Typography>
+                        </Fragment>
+                }
             </Paper>
         </Grid>
     </Grid>
