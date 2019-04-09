@@ -10,15 +10,23 @@ class App extends Component {
   }
 
   getExercisesByMuscules() {
+    const initExercises = muscles.reduce((exercises, category) => ({ //!(1)! because when we delete all the exercises the categories also disappear
+      ...exercises,
+      [category]: []
+    }), {})
+    // console.log(muscles, initExercises)
+
     return Object.entries(this.state.exercises.reduce((exercises, exercise) => {
         const { muscles } = exercise
 
-        exercises[muscles] = exercises[muscles]
-          ? [...exercises[muscles], exercise]
-          : [exercise]
+        exercises[muscles] = [...exercises[muscles], exercise]
+
+        // exercises[muscles] = exercises[muscles]
+        //   ? [...exercises[muscles], exercise]
+        //   : [exercise]
         
         return exercises
-      }, {})
+      }, initExercises) //!(1)! here used to be a {} instead of a initExercises
     )
   }
 
@@ -43,6 +51,12 @@ class App extends Component {
     }))
   }
 
+  handleExerciseDelete = id => {
+    this.setState(({ exercises }) => ({
+      exercises: exercises.filter(ex => ex.id !== id)
+    }))
+  }
+
   render() {
     const exercises = this.getExercisesByMuscules()
     const { category, exercise } = this.state
@@ -58,6 +72,7 @@ class App extends Component {
           category={category}
           exercises={exercises}
           onSelect={this.handleExerciseSelect}
+          onDelete={this.handleExerciseDelete}
         />
         <Footer
           category={category}
