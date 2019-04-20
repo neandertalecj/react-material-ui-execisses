@@ -52,13 +52,19 @@ class App extends Component {
     }))
   }
 
-  handleExerciseDelete = id => {
-    this.setState(({ exercises }) => ({
+  // handleExerciseDelete = id => {
+  //   this.setState(({ exercises }) => ({
+  //     exercises: exercises.filter(ex => ex.id !== id),
+  //     editMode: false,
+  //     exercise: {}
+  //   }))
+  // }
+  handleExerciseDelete = id =>
+    this.setState(({ exercises, exercise, editMode }) => ({
       exercises: exercises.filter(ex => ex.id !== id),
-      editMode: false,
-      exercise: {}
+      editMode: exercise.id === id ? false : editMode,
+      exercise: exercise.id === id ? {} : exercise
     }))
-  }
 
   handleExerciseSelectEdit = id => 
     this.setState(({ exercises }) => ({

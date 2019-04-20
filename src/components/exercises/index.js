@@ -1,10 +1,5 @@
 import React, { Fragment } from 'react';
 import { Grid, Paper, Typography } from '@material-ui/core'
-// import { ListItem, ListItemText} from '@material-ui/core/List'ListItemSecondaryAction
-import LeftPanel from './LeftPane'
-import RightPanel from './RightPane'
-import { exercises } from '../../store';
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -13,7 +8,6 @@ import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
 import Form from './Form'
-
 
 const styles = {
     Paper: {
@@ -43,7 +37,6 @@ export default ({
 }) => 
     <Grid container>
         <Grid item sm>
-            {/* <LeftPanel styles={styles} /> */}
             <Paper style={styles.Paper}>
                 {exercises.map(([group, exercises]) => 
                     !category || category === group
@@ -82,7 +75,8 @@ export default ({
         <Grid item sm>
             <Paper style={styles.Paper}>
                 {editMode 
-                    ?   <Form 
+                    ?   <Form
+                            key={id}
                             exercise={exercise}
                             muscles={muscles}
                             onSubmit={onEdit}

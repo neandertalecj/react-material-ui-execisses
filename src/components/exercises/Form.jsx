@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles'
 
 
-const styles = theme => ({
+const styles = theme => console.log(theme) || ({
     FormControl: {
         width: 500
     }
@@ -28,10 +28,17 @@ export default withStyles(styles)(class extends Component {
     }
 
     componentWillReceiveProps({ exercise }) {
+        console.log('fired')
         this.setState({
             ...exercise
         })
     }
+    // static getDerivedStateFromProps({ exercise }) {
+    //     console.log('fired')
+    //     console.log(exercise)
+
+    //     return exercise || null
+    // }
 
     handleChange = name => ({ target: { value }}) => {
         this.setState({
@@ -101,6 +108,7 @@ export default withStyles(styles)(class extends Component {
                 color="primary" 
                 variant="contained"
                 onClick={this.handleSubmit}
+                disabled={!title || !muscles}
             >
                 {exercise ? 'Edit' : 'Create'}
             </Button>
