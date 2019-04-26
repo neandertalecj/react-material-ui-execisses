@@ -34,7 +34,11 @@ export default class extends Component {
               { muscles } = this.props
               
         return <Fragment>
-            <Fab onClick={this.handleToggle} size="small">
+            <Fab 
+                onClick={this.handleToggle} 
+                color="secondary" 
+                size="small"
+            >
                 <Add />
             </Fab>
             <Dialog
