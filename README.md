@@ -1,3 +1,6 @@
+https://www.youtube.com/playlist?list=PLcCp4mjO-z98WAu4sd0eVha1g-NMfzHZk
+https://github.com/alex996/react-exercises
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

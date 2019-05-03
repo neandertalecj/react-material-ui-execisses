@@ -10,9 +10,10 @@ import Fab from '@material-ui/core/Fab';
 import Add from '@material-ui/icons/Add'
 
 import Form from '../Form'
+import { withContext } from '../../../context'
 
 
-export default class extends Component {
+class CreateDialog extends Component {
     state = {
         open: false,
     }
@@ -32,6 +33,7 @@ export default class extends Component {
     render() {
         const { open } = this.state,
               { muscles } = this.props
+        console.log('Create', this.props)
               
         return <Fragment>
             <Fab 
@@ -62,4 +64,5 @@ export default class extends Component {
         </Fragment>
     }
 }
-    
+
+export default withContext(CreateDialog)

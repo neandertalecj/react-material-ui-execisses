@@ -71,6 +71,7 @@ export default withStyles(styles)(class extends Component {
     render() {
         const { title, description, muscles } = this.state
         const { classes, exercise, muscles: categories } = this.props
+        console.log('test',muscles)
         return <form>
             <TextField
                 label="Title"
